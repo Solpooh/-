@@ -64,6 +64,7 @@ let increment = (id) => {
     let selectedItem = id;
     let search = basket.find((x) => x.id === selectedItem.id);
 
+    console.log(search);
     // 물건이 존재하지 않으면 새로 push, 존재하면 수량만 증가 
     if(search === undefined) {
         basket.push({
@@ -78,6 +79,14 @@ let increment = (id) => {
 };
 let decrement = (id) => {
     let selectedItem = id;
-    console.log(selectedItem.id);
+    let search = basket.find((x) => x.id === selectedItem.id);
+
+    // item이 0으로 떨어지면 함수 종료. 마이너스값 방지
+    if(search.item === 0) return;
+    else {
+        search.item -= 1;
+    }
+
+    console.log(basket);
 };
 let update = () => {};

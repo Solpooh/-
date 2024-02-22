@@ -79,24 +79,27 @@ let increment = (id) => {
         search.item += 1;
     }
 
-    localStorage.setItem("data", JSON.stringify(basket));
     // console.log(basket);
     update(selectedItem.id);
+    localStorage.setItem("data", JSON.stringify(basket));
 };
 
 let decrement = (id) => {
     let selectedItem = id;
     let search = basket.find((x) => x.id === selectedItem.id);
 
+    // 바구니의 내용이 없으면
+    if(search === undefined) return;
     // item이 0으로 떨어지면 함수 종료. 마이너스값 방지
-    if(search.item === 0) return;
+    else if(search.item === 0) return;
     else {
         search.item -= 1;
     }
-
-    localStorage.setItem("data", JSON.stringify(basket));
-    // console.log(basket);
+    
     update(selectedItem.id);
+    basket = basket.filter((x) => x.item !== 0);
+    // console.log(basket);
+    localStorage.setItem("data", JSON.stringify(basket));
 };
 
 let update = (id) => {
@@ -111,4 +114,5 @@ let calculation = () => {
     cartIcon.innerHTML = basket.map((x) => x.item).reduce((x, y) => x + y, 0)
 };
 
+// 애플리케이션 로드 시 항상 실행 => 장바구니 수량 계산이 항상 이루어짐
 calculation();

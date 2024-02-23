@@ -110,6 +110,12 @@ let removeItem = (id) => {
     localStorage.setItem("data", JSON.stringify(basket));
 };
 
+let clearCart = () => {
+    basket = [];
+    generateCartItems();
+    localStorage.setItem("data", JSON.stringify(basket));
+}
+
 let TotalAmount = () => {
      if (basket.length !== 0) {
         let amount = basket.map((x) => {
@@ -122,7 +128,7 @@ let TotalAmount = () => {
         label.innerHTML = `
         <h2>총 결제금액 : $ ${amount}</h2>
         <button class="checkout">결제하기</button>
-        <button class="removeAll">카트 비우기</button>
+        <button onclick="clearCart()" class="removeAll">카트 비우기</button>
         `;
      } else return;
 };

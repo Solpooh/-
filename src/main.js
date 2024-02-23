@@ -1,38 +1,5 @@
 let shop = document.getElementById('shop');
 
-let shopItemsData = [
-    {
-        id: "abcd",
-        name: "Casual Shirt",
-        price: 45,
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        img: "images/img-1.jpg",
-    },
-    {
-        id: "abcde",
-        name: "Office Shirt",
-        price: 100,
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        img: "images/img-2.jpg",
-    },
-    {
-        id: "abcdef",
-        name: "T Shirt",
-        price: 25,
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        img: "images/img-3.jpg",
-
-    },
-    {
-        id: "abcdefg",
-        name: "Mens Shirt",
-        price: 300,
-        desc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        img: "images/img-4.jpg",
-
-    }
-];
-
 // let basket = [];
 // localStorage에 data가 없을 경우 빈배열
 let basket = JSON.parse(localStorage.getItem("data")) || [];

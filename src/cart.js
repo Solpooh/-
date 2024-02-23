@@ -13,7 +13,6 @@ let generateCartItems = () => {
     if(basket.length !== 0) {
         return (ShoppingCart.innerHTML = basket
             .map((x) => {
-                console.log(x);
                 let { id, item } = x;
                 let search = shopItemsData.find((y) => y.id === id) || [];
                 return ` 
@@ -25,7 +24,7 @@ let generateCartItems = () => {
                             <p>${search.name}</p>
                             <p class="cart-item-price">$ ${search.price}</p>
                         </h4>
-                        <i class="bi bi-x-lg"></i>
+                        <i onclick="removeItem(${id})" class="bi bi-x-lg"></i>
                     </div>
 
                     <div class="buttons">
@@ -99,4 +98,12 @@ let update = (id) => {
     // console.log(search.item);
     document.getElementById(id).innerHTML = search.item;
     calculation();
+};
+
+let removeItem = (id) => {
+    let selectedItem = id;
+    basket = basket.filter((x) => x.id !== selectedItem.id);
+    generateCartItems();
+    
+    localStorage.setItem("data", JSON.stringify(basket));
 };

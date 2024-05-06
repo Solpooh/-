@@ -1,1 +1,1 @@
-Shopping Cart made by JavaScript
+Shopping Cart made by JavaScript, HTML
